@@ -36,3 +36,9 @@
 *.db
 *.opendb
 /Fisherman/.vs/Fisherman/v16/ipch/AutoPCH
+*.ipch
+*.ilk
+*.pdb
+*.tlog
+*.log
+*.idb
