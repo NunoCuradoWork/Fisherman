@@ -35,3 +35,4 @@
 *.sqlite
 *.db
 *.opendb
+/Fisherman/.vs/Fisherman/v16/ipch/AutoPCH
