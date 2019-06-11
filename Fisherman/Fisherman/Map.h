@@ -1,4 +1,5 @@
 #pragma once
+#include <vector>
 
 class Tile;
 
@@ -7,11 +8,13 @@ class Map {
 private:
 	int column_size;
 	int row_size;
-	Tile* tile;
-
-	void create(int column, int row);
-
+	std::vector<std::vector<Tile*>> map;
+	
 public:
 
-	Map(int column, int row);
+	Map() = delete;
+	Map(int row, int column);
+	~Map();
+
+	void printMap();
 };

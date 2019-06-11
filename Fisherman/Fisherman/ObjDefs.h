@@ -2,6 +2,6 @@
 
 //Tile TYPE
 
-#define WATER 0
-#define LAND 1
+#define WATER '0'
+#define LAND '1'
 
