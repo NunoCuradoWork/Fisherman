@@ -19,26 +19,24 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Configs.h" />
+    <ClInclude Include="Config.h" />
     <ClInclude Include="Consola.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="ObjDefs.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Port.h" />
-    <ClInclude Include="Reader.h" />
     <ClInclude Include="Ship.h" />
     <ClInclude Include="Tile.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Configs.cpp" />
+    <ClCompile Include="Config.cpp" />
     <ClCompile Include="Consola.cpp" />
     <ClCompile Include="Exemplo.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Port.cpp" />
-    <ClCompile Include="Reader.cpp" />
     <ClCompile Include="Ship.cpp" />
     <ClCompile Include="Tile.cpp" />
   </ItemGroup>

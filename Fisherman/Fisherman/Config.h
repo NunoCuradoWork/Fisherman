@@ -1,9 +1,17 @@
 #pragma once
+#include <string>
+#include <vector>
 
+class Map;
 
-class Configs
+class Config
 {
 private:
+	
+	std::string filename;
+	std::vector<int> stats;
+	std::vector<std::string> mapString;
+
 	//General
 	int column;
 	int row;
@@ -27,6 +35,7 @@ private:
 
 public:
 	
+	//Gets and Sets
 	int getColumn() { return this->column; };
 	void setColumn(int x) { this->column = x; };
 
@@ -72,4 +81,10 @@ public:
 	int getSellCargoPrice() { return this->sellCargoPrice; };
 	void setSellCargoPrice(int x) { this->sellCargoPrice = x; };
 
+	std::string getFilename() { return this->filename; }
+
+	//Main methods
+	Config(std::string filename);
+	void readFile(Map &map);
+	void setStats();
 };
