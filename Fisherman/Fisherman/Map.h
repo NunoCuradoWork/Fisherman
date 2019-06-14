@@ -2,6 +2,7 @@
 #include <vector>
 
 class Tile;
+class Config;
 
 class Map {
 
@@ -13,7 +14,6 @@ private:
 public:
 
 	Map();
-	//Map(int row, int column);
 	~Map();
 
 	void printMap();
@@ -21,8 +21,10 @@ public:
 
 	//Gets and Sets
 	void setColumnSize(int x) { this->column_size = x; }
-	int getColumnSize() { return this->column_size; }
+	int getColumnSize() const { return this->column_size; }
 
 	void setRowSize(int x) { this->row_size = x; }
-	int getRowSize() { return this->row_size; }
+	int getRowSize() const { return this->row_size; }
+
+	std::vector<std::vector<Tile*>> getMap() const { return this->map; }
 };

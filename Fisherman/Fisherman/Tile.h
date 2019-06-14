@@ -23,7 +23,11 @@ private:
 public:
 	Tile();
 
+
 	char getType();
+	void setType(char x);
+
+
 	int getFish();
 	Ship* getShip();
 	Port* getPort();

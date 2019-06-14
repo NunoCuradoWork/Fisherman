@@ -14,6 +14,11 @@ char Tile::getType()
 	return this->type;
 }
 
+void Tile::setType(char x)
+{
+	this->type = x;
+}
+
 int Tile::getFish()
 {
 	return this->fish;

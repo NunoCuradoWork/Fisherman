@@ -3,6 +3,24 @@
 #include <vector>
 
 class Map;
+class Tile;
+
+enum Stats 
+{
+	WEALTH=0,
+	PIRATERATE,
+	SHIPPRICE,
+	SOLDERPRICE,
+	SELLFISHPRICE,
+	BUYCARGOPRICE,
+	SELLCARGOPRICE,
+	PORTSOLDIERS,
+	EVENTRATE,
+	STORMRATE,
+	SIRENRATE,
+	STILLRATE,
+	RIOTRATE
+};
 
 class Config
 {
@@ -10,7 +28,7 @@ private:
 	
 	std::string filename;
 	std::vector<int> stats;
-	std::vector<std::string> mapString;
+	std::vector< std::vector<char> > mapChar;
 
 	//General
 	int column;
@@ -84,7 +102,19 @@ public:
 	std::string getFilename() { return this->filename; }
 
 	//Main methods
+
+	//Constructor
 	Config(std::string filename);
-	void readFile(Map &map);
-	void setStats();
+
+
+	//Read file and fill local variables
+	void getConfigFromFile(Map &map);
+	//Set config fields
+	void setStatsFromConfig();
+	//Set initial map
+
+
+	void setInitialMap(Map& map);
+	void printMap();
+
 };

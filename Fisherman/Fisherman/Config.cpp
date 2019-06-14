@@ -4,6 +4,7 @@
 #include <sstream>
 #include <iostream>
 #include "Map.h"
+#include "Tile.h"
 
 
 Config::Config(std::string filename)
@@ -26,12 +27,14 @@ Config::Config(std::string filename)
 	this->sellCargoPrice = 0;
 }
 
-void Config::readFile(Map& map)
+void Config::getConfigFromFile(Map& map)
 {
 	std::ifstream myfile(getFilename());
 	std::string token;
+	char mapSymbols;
 	int value;
 	int counter = 0;
+	int mapCounter = 0;
 
 	if (myfile.is_open())
 	{
@@ -56,15 +59,106 @@ void Config::readFile(Map& map)
 			}
 			else
 			{
-				 iss >> token;
-				 mapString.push_back(token);
+				std::vector<char> aux;
+				while(iss.get(mapSymbols))
+				{
+					aux.push_back(mapSymbols);
+				}
+				mapChar.push_back(aux);
 			}
 			counter++;
 		}
 	}
 	else
 	{
-		std::cout << "ERROR" << std::endl;
+		std::cout << "ERROR, cannot open configFile" << std::endl;
 	}
 	myfile.close();
+}
+
+void Config::setStatsFromConfig()
+{
+	for (int i = 0; i < stats.size(); i++)
+	{
+		switch (i)
+		{
+			case Stats::WEALTH:
+				setWealth(stats[i]);
+				break;
+
+			case Stats::PIRATERATE:
+				setPirateRate(stats[i]);
+				break;
+
+			case Stats::SHIPPRICE:
+				setShipPrice(stats[i]);
+				break;
+
+			case Stats::SOLDERPRICE:
+				setSoldierPrice(stats[i]);
+				break;
+
+			case Stats::SELLFISHPRICE:
+				setSellFishPrice (stats[i]);
+				break;
+
+			case Stats::BUYCARGOPRICE:
+				setBuyCargoPrice(stats[i]);
+				break;
+
+			case Stats::SELLCARGOPRICE:
+				setSellCargoPrice(stats[i]);
+				break;
+
+			case Stats::PORTSOLDIERS:
+				setPortSoldiers(stats[i]);
+				break;
+
+			case Stats::EVENTRATE:
+				setEventRate(stats[i]);
+				break;
+
+			case Stats::STORMRATE:
+				setStormRate(stats[i]);
+				break;
+
+			case Stats::SIRENRATE:
+				setSirenRate(stats[i]);
+				break;
+
+			case Stats::STILLRATE:
+				setStillRate(stats[i]);
+				break;
+
+			case Stats::RIOTRATE:
+				setRiotRate(stats[i]);
+				break;
+
+			default:
+				break;
+		}
+	}
+}
+
+void Config::setInitialMap(Map& map)
+{
+	for (int i = 0; i < map.getMap().size(); i++)
+	{
+		for (int j = 0; j < map.getMap()[0].size(); j++)
+		{
+			map.getMap()[i][j]->setType(mapChar[i][j]);
+		}
+	}	
+}
+
+void Config::printMap()
+{
+	for (int i = 0; i < mapChar.size(); i++)
+	{
+		for (int j = 0; j < mapChar[0].size(); j++)
+		{
+			std::cout << mapChar[i][j];
+		}
+		std::cout << std::endl;
+	}
 }
