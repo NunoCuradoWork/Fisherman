@@ -27,7 +27,7 @@ Config::Config(std::string filename)
 	this->sellCargoPrice = 0;
 }
 
-void Config::getConfigFromFile(Map& map)
+void Config::getConfigFromFile(Map* map)
 {
 	std::ifstream myfile(getFilename());
 	std::string token;
@@ -45,14 +45,14 @@ void Config::getConfigFromFile(Map& map)
 			if (counter == 0)
 			{
 				iss >> token >> value;
-				map.setRowSize(value);
+				map->setRowSize(value);
 			}
 			else if (counter == 1)
 			{
 				iss >> token >> value;
-				map.setColumnSize(value);
+				map->setColumnSize(value);
 			}
-			else if (counter > map.getRowSize()+1)
+			else if (counter > map->getRowSize()+1)
 			{
 				iss >> token >> value; 
 				stats.push_back(value);
@@ -140,13 +140,13 @@ void Config::setStatsFromConfig()
 	}
 }
 
-void Config::setInitialMap(Map& map)
+void Config::setInitialMap(Map* map)
 {
-	for (int i = 0; i < map.getMap().size(); i++)
+	for (int i = 0; i < map->getMap().size(); i++)
 	{
-		for (int j = 0; j < map.getMap()[0].size(); j++)
+		for (int j = 0; j < map->getMap()[0].size(); j++)
 		{
-			map.getMap()[i][j]->setType(mapChar[i][j]);
+			map->getMap()[i][j]->setType(mapChar[i][j]);
 		}
 	}	
 }

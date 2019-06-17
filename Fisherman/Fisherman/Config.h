@@ -106,15 +106,17 @@ public:
 	//Constructor
 	Config(std::string filename);
 
+	Config() = delete;
+
 
 	//Read file and fill local variables
-	void getConfigFromFile(Map &map);
+	void getConfigFromFile(Map* map);
 	//Set config fields
 	void setStatsFromConfig();
 	//Set initial map
 
 
-	void setInitialMap(Map& map);
+	void setInitialMap(Map* map);
 	void printMap();
 
 };

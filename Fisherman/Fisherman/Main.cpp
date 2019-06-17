@@ -6,18 +6,22 @@
 #include <iostream>
 
 
+
+
 int main()
 {
 	Game game;
-	Map map;
-	Config config("configFile.txt");
+	game.execConfig();
 
 
-	config.getConfigFromFile(map);
-	map.createMap();
-	config.setInitialMap(map);
-	map.printMap();
+	bool isRunning = true;
+	
+
+	while (isRunning)
+	{
 
 
-	std::cout << "END" << std::endl;
+	}
+	
+	return 0;
 }

@@ -33,6 +33,7 @@
     <ClCompile Include="Config.cpp" />
     <ClCompile Include="Consola.cpp" />
     <ClCompile Include="Exemplo.cpp" />
+    <ClCompile Include="Game.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="Player.cpp" />
