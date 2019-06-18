@@ -1,15 +1,16 @@
 #include "Config.h"
-#include <fstream>
-#include <string>
-#include <sstream>
-#include <iostream>
 #include "Map.h"
 #include "Tile.h"
 
 
-Config::Config(std::string filename)
+#include <fstream>
+#include <string>
+#include <sstream>
+#include <iostream>
+
+
+Config::Config():filename("configFile.txt")
 {
-	this->filename = filename;
 	this->column = 0;
 	this->row = 0;
 	this->wealth = 0;

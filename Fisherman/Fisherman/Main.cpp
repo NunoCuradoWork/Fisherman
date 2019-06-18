@@ -11,17 +11,18 @@
 int main()
 {
 	Game game;
-	game.execConfig();
-
-
 	bool isRunning = true;
-	
+
+
+	game.initSettings();
+	game.printPlayers();
 
 	while (isRunning)
 	{
-
-
+		game.receiveLineCommands();
+		isRunning = false;
 	}
 	
+	std::cout << "END" << std::endl;
 	return 0;
 }

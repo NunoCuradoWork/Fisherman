@@ -4,10 +4,9 @@
 #include <vector>
 
 
-Map::Map()
+Map::Map():column_size(0), row_size(0)
 {
-	this->column_size = 0;
-	this->row_size = 0;
+
 }
 
 Map::~Map()

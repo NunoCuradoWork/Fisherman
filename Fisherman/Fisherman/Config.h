@@ -104,10 +104,7 @@ public:
 	//Main methods
 
 	//Constructor
-	Config(std::string filename);
-
-	Config() = delete;
-
+	Config();
 
 	//Read file and fill local variables
 	void getConfigFromFile(Map* map);

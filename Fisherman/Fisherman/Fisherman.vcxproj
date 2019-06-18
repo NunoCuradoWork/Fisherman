@@ -22,6 +22,7 @@
     <ClInclude Include="Config.h" />
     <ClInclude Include="Consola.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="CommandLine.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="ObjDefs.h" />
     <ClInclude Include="Player.h" />
@@ -30,6 +31,7 @@
     <ClInclude Include="Tile.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CommandLine.cpp" />
     <ClCompile Include="Config.cpp" />
     <ClCompile Include="Consola.cpp" />
     <ClCompile Include="Exemplo.cpp" />
