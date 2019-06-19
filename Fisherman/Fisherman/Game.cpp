@@ -1,5 +1,6 @@
 #include "Game.h"
 #include "Player.h"
+
 #include <iostream>
 #include <string>
 
@@ -46,14 +47,128 @@ void Game::printPlayers()
 		std::cout << players[i]->getName() << ' ' << players[i]->getWealth() << std::endl;
 }
 
-void Game::receiveLineCommands()
+void Game::runGame()
 {
-	std::string input;
-	commandLine.getListofCommands().clear();
+	enterCommands();
+	executeCommands();
+	combatePhase();
+	eventPhase();
+	piratePhase();
+}
 
-	while (input.compare("prox") != 0)
+void Game::paintMap()
+{
+}
+
+void Game::enterCommands()
+{
+	getCommandLine().receiveLineCommands();
+}
+
+void Game::executeCommands()
+{
+	std::string command;
+
+
+	for (int i = 0; i < commandLine.getListofCommands().size(); i++)
 	{
-		std::getline(std::cin, input);
-		commandLine.getListofCommands().push_back(input);
+
+		if (commandLine.getListofCommands().at(i).command.compare("sair") == 0)
+		{
+
+		}
+		else if (commandLine.getListofCommands().at(i).command.compare("delg") == 0)
+		{
+
+		}
+		else if (commandLine.getListofCommands().at(i).command.compare("loadg") == 0)
+		{
+
+		}
+		else if (commandLine.getListofCommands().at(i).command.compare("saveg") == 0)
+		{
+
+		}
+		else if (commandLine.getListofCommands().at(i).command.compare("comprasold") == 0)
+		{
+
+		}
+		else if (commandLine.getListofCommands().at(i).command.compare("vaipara") == 0)
+		{
+			if (commandLine.getListofCommands().at(i).arguments.size() == 2)
+			{
+
+			}
+			else
+			{
+
+			}
+
+		}
+		else if (commandLine.getListofCommands().at(i).command.compare("evnav") == 0)
+		{
+
+		}
+		else if (commandLine.getListofCommands().at(i).command.compare("evpos") == 0)
+		{
+
+		}
+		else if (commandLine.getListofCommands().at(i).command.compare("pirata") == 0)
+		{
+
+		}
+		else if (commandLine.getListofCommands().at(i).command.compare("stop") == 0)
+		{
+
+		}
+		else if (commandLine.getListofCommands().at(i).command.compare("auto") == 0)
+		{
+
+		}
+		else if (commandLine.getListofCommands().at(i).command.compare("move") == 0)
+		{
+
+		}
+		else if (commandLine.getListofCommands().at(i).command.compare("vende") == 0)
+		{
+
+		}
+		else if (commandLine.getListofCommands().at(i).command.compare("compra") == 0)
+		{
+
+		}
+		else if (commandLine.getListofCommands().at(i).command.compare("lista") == 0)
+		{
+
+		}
+		else if (commandLine.getListofCommands().at(i).command.compare("vendenav") == 0)
+		{
+
+		}
+		else if (commandLine.getListofCommands().at(i).command.compare("compranav") == 0)
+		{
+
+		}
+		else if (commandLine.getListofCommands().at(i).command.compare("exec") == 0)
+		{
+
+		}
 	}
+}
+
+void Game::combatePhase()
+{
+}
+
+void Game::eventPhase()
+{
+}
+
+void Game::piratePhase()
+{
+}
+
+CommandLine& Game::getCommandLine()
+{
+	return commandLine;
 }

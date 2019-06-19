@@ -1,8 +1,9 @@
 #pragma once
-#include <vector>
 #include "Config.h"
 #include "Map.h"
 #include "CommandLine.h"
+
+#include <vector>
 
 class Player;
 
@@ -24,17 +25,25 @@ public:
 
 	int getTurn() const { return turn;}
 	void setTurn(int updateTurn) { turn = updateTurn; }
+	std::vector<Player*> getPlayers() { return players; }
 
 	Map& getMap();
-
 	Config& getConfig(); 
-
-	std::vector<Player*> getPlayers(){ return players; }
+	CommandLine& getCommandLine();
 
 	void initSettings();
 	void createPlayers();
 	void printPlayers();
 
-	void receiveLineCommands();
+	void runGame();
+	void paintMap();
+
+	void enterCommands();
+	void executeCommands();
+	void combatePhase();
+	void eventPhase();
+	void piratePhase();
+	
+
 };
 

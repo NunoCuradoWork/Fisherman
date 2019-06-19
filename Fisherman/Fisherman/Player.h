@@ -12,7 +12,6 @@ private:
 	int wealth;
 	std::vector <Ship*> navy;
 
-
 public:
 
 	Player(std::string name);
@@ -24,5 +23,4 @@ public:
 	void setWealth(int x) { wealth = x; }
 
 	std::vector<Ship*> getNavy() { return navy; }
-
 };

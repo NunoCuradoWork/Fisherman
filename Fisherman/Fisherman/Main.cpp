@@ -13,13 +13,15 @@ int main()
 	Game game;
 	bool isRunning = true;
 
-
 	game.initSettings();
 	game.printPlayers();
 
 	while (isRunning)
 	{
-		game.receiveLineCommands();
+		game.paintMap();
+		game.runGame();
+
+		
 		isRunning = false;
 	}
 	

@@ -1,14 +1,21 @@
 #pragma once
 #include <string>
 #include <vector>
-#include <sstream>
+
+
+struct CommandArguments
+{
+	std::string command;
+	std::vector <std::string> arguments;
+};
+
 
 class CommandLine
 {
 private:
 
 	std::string command;
-	std::vector<std::string> listOfCommands;
+	std::vector<CommandArguments> listOfCommands;
 
 public:
 
@@ -16,6 +23,9 @@ public:
 	~CommandLine() {};
 
 	std::string getCommand() { return command; }
-	std::vector<std::string>& getListofCommands(){ return listOfCommands; }
+	std::vector<CommandArguments>& getListofCommands(){ return listOfCommands; }
 
+
+	void receiveLineCommands();
 };
+
