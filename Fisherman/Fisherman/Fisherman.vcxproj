@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClInclude Include="Config.h" />
     <ClInclude Include="Consola.h" />
+    <ClInclude Include="Fragata.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="CommandLine.h" />
     <ClInclude Include="Map.h" />
@@ -29,12 +30,14 @@
     <ClInclude Include="Port.h" />
     <ClInclude Include="Ship.h" />
     <ClInclude Include="Tile.h" />
+    <ClInclude Include="Veleiro.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CommandLine.cpp" />
     <ClCompile Include="Config.cpp" />
     <ClCompile Include="Consola.cpp" />
     <ClCompile Include="Exemplo.cpp" />
+    <ClCompile Include="Fragata.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Map.cpp" />
@@ -42,6 +45,7 @@
     <ClCompile Include="Port.cpp" />
     <ClCompile Include="Ship.cpp" />
     <ClCompile Include="Tile.cpp" />
+    <ClCompile Include="Veleiro.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

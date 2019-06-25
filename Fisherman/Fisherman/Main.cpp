@@ -2,10 +2,11 @@
 #include "Ship.h"
 #include "Map.h"
 #include "Config.h"
+
+
+
 #include <vector>
 #include <iostream>
-
-
 
 
 int main()
@@ -27,4 +28,5 @@ int main()
 	
 	std::cout << "END" << std::endl;
 	return 0;
+
 }

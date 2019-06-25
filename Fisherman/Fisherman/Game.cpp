@@ -67,33 +67,35 @@ void Game::enterCommands()
 
 void Game::executeCommands()
 {
-	std::string command;
+	std::string cmd;
+
 
 
 	for (int i = 0; i < commandLine.getListofCommands().size(); i++)
 	{
+		cmd = commandLine.getListofCommands().at(i).command;
 
-		if (commandLine.getListofCommands().at(i).command.compare("sair") == 0)
+		if (cmd.compare("sair") == 0)
 		{
 
 		}
-		else if (commandLine.getListofCommands().at(i).command.compare("delg") == 0)
+		else if (cmd.compare("delg") == 0)
 		{
 
 		}
-		else if (commandLine.getListofCommands().at(i).command.compare("loadg") == 0)
+		else if (cmd.compare("loadg") == 0)
 		{
 
 		}
-		else if (commandLine.getListofCommands().at(i).command.compare("saveg") == 0)
+		else if (cmd.compare("saveg") == 0)
 		{
 
 		}
-		else if (commandLine.getListofCommands().at(i).command.compare("comprasold") == 0)
+		else if (cmd.compare("comprasold") == 0)
 		{
 
 		}
-		else if (commandLine.getListofCommands().at(i).command.compare("vaipara") == 0)
+		else if (cmd.compare("vaipara") == 0)
 		{
 			if (commandLine.getListofCommands().at(i).arguments.size() == 2)
 			{
@@ -105,51 +107,51 @@ void Game::executeCommands()
 			}
 
 		}
-		else if (commandLine.getListofCommands().at(i).command.compare("evnav") == 0)
+		else if (cmd.compare("evnav") == 0)
 		{
 
 		}
-		else if (commandLine.getListofCommands().at(i).command.compare("evpos") == 0)
+		else if (cmd.compare("evpos") == 0)
 		{
 
 		}
-		else if (commandLine.getListofCommands().at(i).command.compare("pirata") == 0)
+		else if (cmd.compare("pirata") == 0)
 		{
 
 		}
-		else if (commandLine.getListofCommands().at(i).command.compare("stop") == 0)
+		else if (cmd.compare("stop") == 0)
 		{
 
 		}
-		else if (commandLine.getListofCommands().at(i).command.compare("auto") == 0)
+		else if (cmd.compare("auto") == 0)
 		{
 
 		}
-		else if (commandLine.getListofCommands().at(i).command.compare("move") == 0)
+		else if (cmd.compare("move") == 0)
 		{
 
 		}
-		else if (commandLine.getListofCommands().at(i).command.compare("vende") == 0)
+		else if (cmd.compare("vende") == 0)
 		{
 
 		}
-		else if (commandLine.getListofCommands().at(i).command.compare("compra") == 0)
+		else if (cmd.compare("compra") == 0)
 		{
 
 		}
-		else if (commandLine.getListofCommands().at(i).command.compare("lista") == 0)
+		else if (cmd.compare("lista") == 0)
 		{
 
 		}
-		else if (commandLine.getListofCommands().at(i).command.compare("vendenav") == 0)
+		else if (cmd.compare("vendenav") == 0)
 		{
 
 		}
-		else if (commandLine.getListofCommands().at(i).command.compare("compranav") == 0)
+		else if (cmd.compare("compranav") == 0)
 		{
 
 		}
-		else if (commandLine.getListofCommands().at(i).command.compare("exec") == 0)
+		else if (cmd.compare("exec") == 0)
 		{
 
 		}
