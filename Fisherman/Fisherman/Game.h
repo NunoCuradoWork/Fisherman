@@ -2,6 +2,7 @@
 #include "Config.h"
 #include "Map.h"
 #include "CommandLine.h"
+#include "Consola.h"
 
 #include <vector>
 
@@ -37,6 +38,10 @@ public:
 
 	void runGame();
 	void paintMap();
+
+
+	void setInitialGraphicalOptions();
+
 
 	void enterCommands();
 	void executeCommands();

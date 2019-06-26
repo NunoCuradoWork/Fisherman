@@ -3,6 +3,7 @@
 
 class Tile;
 class Config;
+class Port;
 
 class Map {
 
@@ -10,6 +11,7 @@ private:
 	int column_size;
 	int row_size;
 	std::vector<std::vector<Tile*>> map;
+	std::vector<Port*> portList;
 	
 public:
 
@@ -27,4 +29,11 @@ public:
 	int getRowSize() const { return this->row_size; }
 
 	std::vector<std::vector<Tile*>> getMap() const { return this->map; }
+
+	std::vector<Port*>& getPortList();
+
+
+	void drawMapBorders();
+	void drawLogBorders();
+	void cmdLineBorders();
 };

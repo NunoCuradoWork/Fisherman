@@ -13,6 +13,8 @@ protected:
 
 public:
 
+
+
 	//Return true if event is applied
 	virtual bool stormEvent() = 0;
 

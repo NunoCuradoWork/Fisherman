@@ -1,6 +1,8 @@
 #include "Config.h"
 #include "Map.h"
 #include "Tile.h"
+#include "ObjDefs.h"
+#include "Port.h"
 
 
 #include <fstream>
@@ -79,7 +81,7 @@ void Config::getConfigFromFile(Map* map)
 
 void Config::setStatsFromConfig()
 {
-	for (int i = 0; i < stats.size(); i++)
+	for (unsigned int i = 0; i < stats.size(); i++)
 	{
 		switch (i)
 		{
@@ -143,20 +145,40 @@ void Config::setStatsFromConfig()
 
 void Config::setInitialMap(Map* map)
 {
-	for (int i = 0; i < map->getMap().size(); i++)
+	char aux;
+	bool auxAlly = false;
+
+	for (unsigned int i = 0; i < map->getMap().size(); i++)
 	{
-		for (int j = 0; j < map->getMap()[0].size(); j++)
+		for (unsigned int j = 0; j < map->getMap()[0].size(); j++)
 		{
-			map->getMap()[i][j]->setType(mapChar[i][j]);
+			aux = mapChar[i][j];
+
+			map->getMap()[i][j]->setType(aux);
+
+			if (aux == WATER)
+				map->getMap()[i][j]->setFish(MAX_TILE_FISH);
+			else if (aux != LAND && aux != WATER)
+			{
+				if (std::isupper(aux))
+					auxAlly = true;
+				else
+					auxAlly = false;
+
+				Port* port = new Port(aux, getBuyCargoPrice(), getSellCargoPrice(), getSellFishPrice(), getPortSoldiers(), auxAlly);
+				
+				map->getMap()[i][j]->setPort(*port);
+				map->getPortList().push_back(port);
+			}
 		}
 	}	
 }
 
 void Config::printMap()
 {
-	for (int i = 0; i < mapChar.size(); i++)
+	for (unsigned int i = 0; i < mapChar.size(); i++)
 	{
-		for (int j = 0; j < mapChar[0].size(); j++)
+		for (unsigned int j = 0; j < mapChar[0].size(); j++)
 		{
 			std::cout << mapChar[i][j];
 		}

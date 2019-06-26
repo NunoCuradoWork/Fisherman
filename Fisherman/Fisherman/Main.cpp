@@ -1,8 +1,4 @@
 #include "Game.h"
-#include "Ship.h"
-#include "Map.h"
-#include "Config.h"
-
 
 
 #include <vector>
@@ -12,19 +8,24 @@
 int main()
 {
 	Game game;
+	game.setInitialGraphicalOptions();
+
+
 	bool isRunning = true;
 
+
+	
 	game.initSettings();
-	game.printPlayers();
+	game.paintMap();
 
-	while (isRunning)
-	{
-		game.paintMap();
-		game.runGame();
+	//while (isRunning)
+	//{
+	//	
+	//	game.runGame();
 
-		
-		isRunning = false;
-	}
+	//	
+	//	isRunning = false;
+	//}
 	
 	std::cout << "END" << std::endl;
 	return 0;

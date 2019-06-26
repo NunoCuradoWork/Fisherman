@@ -29,7 +29,17 @@ Ship* Tile::getShip()
 	return this->ship;
 }
 
+void Tile::setShip(Ship& ship)
+{
+	this->ship = &ship;
+}
+
 Port* Tile::getPort()
 {
 	return this->port;
+}
+
+void Tile::setPort(Port& port)
+{
+	this->port = &port;
 }

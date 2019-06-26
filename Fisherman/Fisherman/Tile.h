@@ -16,20 +16,27 @@ private:
 	//};
 
 	char type;
+
 	int fish;
+
+
 	Ship* ship;
 	Port* port;
 
 public:
 	Tile();
 
-
 	char getType();
 	void setType(char x);
 
-
 	int getFish();
+	void setFish(int x) { fish = x; }
+
+
 	Ship* getShip();
+	void setShip(Ship& ship);
+
 	Port* getPort();
+	void setPort(Port& port);
 
 };

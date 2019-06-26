@@ -17,7 +17,6 @@ public:
 	int transferFish(int quantity);
 
 
-	
 	int getFish() { return fish; };
 	void setFish(int x) { fish = x; };
 };

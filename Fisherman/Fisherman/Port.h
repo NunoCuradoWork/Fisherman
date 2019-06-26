@@ -7,13 +7,18 @@ class Port
 {
 private:
 
-	int id;
+	bool isAlly;
 	int soldier;
+
 	char name;
-	int cargo_purchase;
-	int cargo_sell;
-	std::vector <Ship> port_navy;
+	int cargoBuyPrice;
+	int cargoSellPrice;
+	int fishSellPrice;
+
+	std::vector <Ship* > port_navy;
 
 public:
+
+	Port(char name, int cargoBuyPrice, int cargoSellPrice, int fishSellPrice, int soldier, bool isAlly);
 
 };

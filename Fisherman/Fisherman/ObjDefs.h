@@ -2,6 +2,13 @@
 
 //Tile TYPE
 
-#define WATER '0'
-#define LAND '1'
+#define WATER '.'
+#define LAND '+'
+
+
+
+
+
+//Fish quantity
+#define MAX_TILE_FISH 1000
 

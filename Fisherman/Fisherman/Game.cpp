@@ -27,6 +27,7 @@ Config& Game::getConfig()
 void Game::initSettings()
 {
 	config.Config::getConfigFromFile(&map);
+	config.Config::setStatsFromConfig();
 	map.Map::createMap();
 	config.Config::setInitialMap(&map);
 	createPlayers();
@@ -58,6 +59,16 @@ void Game::runGame()
 
 void Game::paintMap()
 {
+	//map.Map::printMap();
+	map.drawMapBorders();
+	map.drawLogBorders();
+	map.cmdLineBorders();
+	
+}
+
+void Game::setInitialGraphicalOptions()
+{
+	Consola::setScreenSize(150, 300);
 }
 
 void Game::enterCommands()

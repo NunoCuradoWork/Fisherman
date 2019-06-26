@@ -25,6 +25,8 @@ bool Veleiro::stormEvent()
 		return true;
 	else if (getStorage() <= 40 / 2 && dist(mt) <= 20)
 		return true;
+
+	return false;
 }
 
 void Veleiro::sellFish(int quantity)
@@ -47,4 +49,6 @@ int Veleiro::transferFish(int quantity)
 	setStorage(getStorage() - quantity);
 
 	totalTransfer = totalTransfer - quantity;
+
+	return totalTransfer;
 }
