@@ -3,6 +3,7 @@
 
 Veleiro::Veleiro() : fish(0)
 {
+	shipType = 'V';
 	soldier = 20;
 	water = 200;
 	cargo = 0;

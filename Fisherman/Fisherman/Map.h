@@ -10,7 +10,7 @@ class Map {
 private:
 	int column_size;
 	int row_size;
-	std::vector<std::vector<Tile*>> map;
+	std::vector<Tile*> map;
 	std::vector<Port*> portList;
 	
 public:
@@ -28,12 +28,14 @@ public:
 	void setRowSize(int x) { this->row_size = x; }
 	int getRowSize() const { return this->row_size; }
 
-	std::vector<std::vector<Tile*>> getMap() const { return this->map; }
-
+	std::vector<Tile*> getMap() const { return this->map; }
 	std::vector<Port*>& getPortList();
 
 
 	void drawMapBorders();
 	void drawLogBorders();
 	void cmdLineBorders();
+	void drawTiles();
+
+	std::vector<Tile> getNeighbors(Tile& tile) const;
 };

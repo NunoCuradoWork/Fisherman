@@ -6,14 +6,13 @@ class Ship
 {
 protected:
 	
+	char shipType;
 	int soldier;
 	int water;
 	int storage;
 	int cargo;
 
 public:
-
-
 
 	//Return true if event is applied
 	virtual bool stormEvent() = 0;
@@ -23,6 +22,9 @@ public:
 
 	void attack();
 	void move();
+
+	char getShipType() { return shipType; }
+	void setShipType(char x) { shipType = x; }
 
 	int getSoldier() { return soldier; }
 	void setSoldier(int x) { soldier = x; }

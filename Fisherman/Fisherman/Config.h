@@ -28,7 +28,7 @@ private:
 	
 	std::string filename;
 	std::vector<int> stats;
-	std::vector< std::vector<char> > mapChar;
+	std::vector<char> mapChar;
 
 	//General
 	int column;

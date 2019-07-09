@@ -1,8 +1,10 @@
 #include "Tile.h"
 #include "ObjDefs.h"
 
-Tile::Tile()
+Tile::Tile(int x, int y)
 {
+	this->point.setX(x);
+	this->point.setY(y);
 	this->fish = 0;
 	this->type = WATER;
 	this->port = nullptr;

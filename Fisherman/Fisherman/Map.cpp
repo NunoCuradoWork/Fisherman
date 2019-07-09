@@ -1,6 +1,7 @@
 #include "Map.h"
 #include "Tile.h"
 #include "Consola.h"
+#include "Ship.h"
 
 #include <iostream>
 #include <vector>
@@ -19,31 +20,43 @@ Map::~Map()
 
 void Map::printMap()
 {
+	int counter = 0;
 	for (unsigned int i = 0; i < map.size(); i++)
 	{
-		for (unsigned int j = 0; j < map[0].size(); j++)
+		if (counter < column_size)
 		{
-			std::cout << map[i][j]->getType();
+			std::cout << map[i]->getType();
+			counter++;
+		}	
+		else
+		{
+			std::cout << std::endl;
+			counter = 0;
 		}
-		std::cout << std::endl;
 	}
 }
 
 void Map::createMap()
 {
-	int column = Map::getColumnSize();
-	int row = Map::getRowSize();
+	int size = row_size * column_size;
+	int x = 0, y = 0;
+	int counter = 0;
 
-	for (int i = 0; i < row; i++)
+	for (int i = 0; i < size; i++)
 	{
-		std::vector <Tile*> aux;
-
-		for (int j = 0; j < column; j++)
+		if (counter < column_size)
 		{
-			Tile* newTile = new Tile();
-			aux.push_back(newTile);
+			counter++;
+			x++;
 		}
-		map.push_back(aux);
+		else
+		{
+			counter = 0;
+			x = 0;
+			y++;
+		}
+		Tile* newTile = new Tile(x, y);
+		map.push_back(newTile);
 	}
 }
 
@@ -192,6 +205,222 @@ void Map::cmdLineBorders()
 		i++;
 	}
 	
+}
+
+void Map::drawTiles()
+{
+	int startY = 6;
+	int startX = 7;
+	int spaceX = 145 / column_size;
+	int spaceY = 55 / row_size;
+	int marginsX = spaceX / 2;
+	int marginsY = spaceY / 2;
+	int y = 6;
+	int x = 7;
+
+	int counter = 0;
+
+	Consola::gotoxy(startX+marginsX,startY+marginsY);
+
+	for (unsigned int i = 0; i < map.size(); ++i)
+	{
+		if (map[i]->getShip() != nullptr)
+			std::cout << map[i]->getShip()->getShipType();
+		else
+			std::cout << map[i]->getType();
+
+		if (counter < column_size - 1)
+		{
+			x += spaceX;
+			Consola::gotoxy(x + marginsX, y + marginsY);
+			counter++;
+		}
+		else
+		{
+			y += spaceY;
+			counter = 0;
+			x = startX;
+			Consola::gotoxy(startX + marginsX, y + marginsY);
+		}	
+	}
+}
+
+std::vector<Tile> Map::getNeighbors(Tile& tile) const
+{
+	std::vector<Tile*> neighbors;
+	int x, y;
+
+	int OriginX = tile.getPoint().getX();
+	int OriginY = tile.getPoint().getY();
+
+	for (auto it : map)
+	{
+		x = it->getPoint.getX();
+		y = it->getPoint.getY();
+
+		if (x == OriginX && y == OriginY)
+		{}
+		else
+		{
+			//Generic case
+			if (OriginX != row_size - 1 && OriginY != column_size - 1)
+			{
+				if (x == OriginX - 1 || x == OriginX || x == OriginX + 1)
+				{
+					if (y == OriginY - 1 || y == OriginY || y == OriginY + 1)
+					{
+						neighbors.push_back(it);
+					}
+				}
+			}
+
+			//Bottom X
+			else if (OriginX == row_size - 1)
+			{
+				if (x == OriginX - 1)
+				{
+					if (y == OriginY - 1 || y == OriginY || y == OriginY + 1)
+					{
+						neighbors.push_back(it);
+					}
+				}
+				else if (x == OriginX)
+				{
+					if (y == OriginY - 1 || y == OriginY + 1)
+					{
+						neighbors.push_back(it);
+					}
+				}
+				else if (x == OriginX - row_size - 1)
+				{
+					if (y == OriginY - 1 || y == OriginY || y == OriginY + 1)
+					{
+						neighbors.push_back(it);
+					}
+				}
+			}
+
+			//Up X
+			else if (OriginX == 0)
+			{
+				if (x == OriginX + 1)
+				{
+					if (y == OriginY - 1 || y == OriginY || y == OriginY + 1)
+					{
+						neighbors.push_back(it);
+					}
+				}
+				else if (x == OriginX)
+				{
+					if (y == OriginY - 1 || y == OriginY + 1)
+					{
+						neighbors.push_back(it);
+					}
+				}
+				else if (x == row_size - 1)
+				{
+					if (y == OriginY - 1 || y == OriginY || y == OriginY + 1)
+					{
+						neighbors.push_back(it);
+					}
+				}
+			}
+
+			//Right Y
+			else if (OriginY == column_size - 1)
+			{
+				if (y == column_size - 1)
+				{
+					if (x == OriginX - 1 || x == OriginX || x == OriginX + 1)
+					{
+						neighbors.push_back(it);
+					}
+				}
+				else if (y == OriginY)
+				{
+					if (x == OriginX - 1 || x == OriginX + 1)
+					{
+						neighbors.push_back(it);
+					}
+				}
+				else if (y == OriginY - column_size - 1)
+				{
+					if (x == OriginX - 1 || x == OriginX || x == OriginX + 1)
+					{
+						neighbors.push_back(it);
+					}
+				}
+			}
+
+			//Left Y
+			else if (OriginY ==0)
+			{
+				if (y == column_size + 1)
+				{
+					if (x == OriginX - 1 || x == OriginX || x == OriginX + 1)
+					{
+						neighbors.push_back(it);
+					}
+				}
+				else if (y == OriginY)
+				{
+					if (x == OriginX - 1 || x == OriginX + 1)
+					{
+						neighbors.push_back(it);
+					}
+				}
+				else if (y == column_size - 1)
+				{
+					if (x == OriginX - 1 || x == OriginX || x == OriginX + 1)
+					{
+						neighbors.push_back(it);
+					}
+				}
+			}
+			//Corner UL
+			else if (OriginY == 0 && OriginX == 0)
+			{
+				if (y == OriginY + 1 && x == OriginX)
+				{
+					neighbors.push_back(it);
+				}
+				else if (y == OriginY + 1 && x == OriginX + 1)
+				{
+					neighbors.push_back(it);
+				}
+				else if (y == OriginY && x == OriginX + 1)
+				{
+					neighbors.push_back(it);
+				}
+				else if (y == column_size -1 && x == OriginX)
+				{
+					neighbors.push_back(it);
+				}
+				else if (y == column_size - 1 && x == OriginX + 1)
+				{
+					neighbors.push_back(it);
+				}
+				else if (y == column_size - 1 && x == row_size - 1)
+				{
+					neighbors.push_back(it);
+				}
+				else if (y == OriginY && x == row_size - 1)
+				{
+					neighbors.push_back(it);
+				}
+				else if (y == OriginY +1 && x == row_size - 1)
+				{
+					neighbors.push_back(it);
+				}
+				
+			}
+		}
+		
+	}
+
+
+
+	return std::vector<Tile>();
 }
 
 

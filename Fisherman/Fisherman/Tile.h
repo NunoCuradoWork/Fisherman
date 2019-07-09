@@ -1,7 +1,9 @@
 #pragma once
+#include "Point.h"
 
 class Ship;
 class Port;
+
 
 class Tile {
 
@@ -16,15 +18,13 @@ private:
 	//};
 
 	char type;
-
 	int fish;
-
-
 	Ship* ship;
 	Port* port;
+	Point point;
 
 public:
-	Tile();
+	Tile(int x, int y);
 
 	char getType();
 	void setType(char x);
@@ -32,11 +32,12 @@ public:
 	int getFish();
 	void setFish(int x) { fish = x; }
 
-
 	Ship* getShip();
 	void setShip(Ship& ship);
 
 	Port* getPort();
 	void setPort(Port& port);
+
+	Point& getPoint() { return point; };
 
 };

@@ -62,12 +62,8 @@ void Config::getConfigFromFile(Map* map)
 			}
 			else
 			{
-				std::vector<char> aux;
 				while(iss.get(mapSymbols))
-				{
-					aux.push_back(mapSymbols);
-				}
-				mapChar.push_back(aux);
+					mapChar.push_back(mapSymbols);
 			}
 			counter++;
 		}
@@ -150,38 +146,38 @@ void Config::setInitialMap(Map* map)
 
 	for (unsigned int i = 0; i < map->getMap().size(); i++)
 	{
-		for (unsigned int j = 0; j < map->getMap()[0].size(); j++)
+		aux = mapChar[i];
+		map->getMap()[i]->setType(aux);
+		if (aux == WATER)
+			map->getMap()[i]->setFish(MAX_TILE_FISH);
+		else if (aux != LAND && aux != WATER)
 		{
-			aux = mapChar[i][j];
-
-			map->getMap()[i][j]->setType(aux);
-
-			if (aux == WATER)
-				map->getMap()[i][j]->setFish(MAX_TILE_FISH);
-			else if (aux != LAND && aux != WATER)
-			{
-				if (std::isupper(aux))
-					auxAlly = true;
-				else
-					auxAlly = false;
-
-				Port* port = new Port(aux, getBuyCargoPrice(), getSellCargoPrice(), getSellFishPrice(), getPortSoldiers(), auxAlly);
+			if (std::isupper(aux))
+				auxAlly = true;
+			else
+				auxAlly = false;
 				
-				map->getMap()[i][j]->setPort(*port);
-				map->getPortList().push_back(port);
-			}
+			Port* port = new Port(aux, getBuyCargoPrice(), getSellCargoPrice(), getSellFishPrice(), getPortSoldiers(), auxAlly);
+			map->getMap()[i]->setPort(*port);
+			map->getPortList().push_back(port);
 		}
-	}	
+	}
 }
 
 void Config::printMap()
 {
+	int counter = 0;
 	for (unsigned int i = 0; i < mapChar.size(); i++)
 	{
-		for (unsigned int j = 0; j < mapChar[0].size(); j++)
+		if (counter < column)
 		{
-			std::cout << mapChar[i][j];
+			std::cout << mapChar[i];
+			counter++;
 		}
-		std::cout << std::endl;
+		else
+		{
+			std::cout << std::endl;
+			counter = 0;
+		}
 	}
 }

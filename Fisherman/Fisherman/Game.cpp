@@ -63,6 +63,7 @@ void Game::paintMap()
 	map.drawMapBorders();
 	map.drawLogBorders();
 	map.cmdLineBorders();
+	map.drawTiles();
 	
 }
 
