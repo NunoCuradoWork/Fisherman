@@ -21,7 +21,9 @@
   <ItemGroup>
     <ClInclude Include="Config.h" />
     <ClInclude Include="Consola.h" />
+    <ClInclude Include="Escuna.h" />
     <ClInclude Include="Fragata.h" />
+    <ClInclude Include="Galeao.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="CommandLine.h" />
     <ClInclude Include="Map.h" />
@@ -37,8 +39,10 @@
     <ClCompile Include="CommandLine.cpp" />
     <ClCompile Include="Config.cpp" />
     <ClCompile Include="Consola.cpp" />
+    <ClCompile Include="Escuna.cpp" />
     <ClCompile Include="Exemplo.cpp" />
     <ClCompile Include="Fragata.cpp" />
+    <ClCompile Include="Galeao.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Map.cpp" />

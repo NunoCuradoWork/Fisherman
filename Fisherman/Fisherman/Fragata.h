@@ -3,5 +3,12 @@
 
 class Fragata : public Ship
 {
+private:
+	
+public:
 
+	Fragata();
+	~Fragata();
+
+	bool stormEvent();
 };
